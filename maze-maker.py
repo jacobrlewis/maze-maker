@@ -17,7 +17,7 @@ class MazeMaker:
         self.end_x = random.randint(0, self.width-1)
 
         # list of visited squares (x,y)
-        self.visited_list = [(self.start_x, 0)]
+        self.visited_list = {(self.start_x, 0)}
 
         # this stack is used for backtracking to fill all squares
         # pieces are stored as [x,y,east connection, south connection]
@@ -72,7 +72,7 @@ class MazeMaker:
             self.stack.append(next_piece)
 
             # add next square to visited list and store it
-            self.visited_list.append((next_piece[0], next_piece[1]))
+            self.visited_list.add((next_piece[0], next_piece[1]))
             self.pieces.append(next_piece)
 
     # returns a list of unvisited adjacents directions
